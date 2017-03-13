@@ -1,6 +1,6 @@
 CC = g++
 CFLAGS = -Wall -Wextra
-FILES = main.cpp file.cpp
+FILES = main.cpp
 TARGET = loops
 
 all:

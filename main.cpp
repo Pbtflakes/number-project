@@ -1,9 +1,11 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "file.hpp"
 
 using namespace std;
+
+void	testprint(string);
+unsigned long	sumfile(string);
 
 int
 main(int argc, char *argv[]) {
@@ -11,14 +13,33 @@ main(int argc, char *argv[]) {
 		cout << "Please specify a file.\n";
 		return 1;
 	} else if (argc == 2) {
-		ifstream numfile;
+		ifstream numfile(argv[1]);
 
-		numfile.open(argv[1], ifstream::in);
+		string nums((istreambuf_iterator<char>(numfile)),
+		       istreambuf_iterator<char>());
 
-		if (numfile.is_open())
-			test_print(argv[1]);
+			testprint(argv[1]);
+			cout << sumfile(nums) << endl;
 		return 0;
 	} else {
 		return 2;
 	}
 }
+
+void
+testprint(string foo) {
+	cout << foo << endl;
+}
+
+unsigned long int
+sumfile(string file) {
+	/* char n; */
+	unsigned long int sum = 0;
+	unsigned int i;
+	for (i = 0; i < file.length(); i++) {
+		sum += file[i] - 30;
+	}
+
+	return sum;
+}
+
