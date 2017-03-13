@@ -16,7 +16,6 @@ main(int argc, char *argv[]) {
 		ifstream numfile(argv[1]);
 		string nums((istreambuf_iterator<char>(numfile)),
 				istreambuf_iterator<char>());
-
 		testprint(argv[1]);
 		cout << sumfile(nums) << endl;
 		return 0;
