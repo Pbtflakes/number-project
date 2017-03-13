@@ -8,3 +8,6 @@ all:
 
 clean:
 	rm $(TARGET)
+
+clang:
+	clang++ $(CFLAGS) -o $(TARGET) $(FILES)
