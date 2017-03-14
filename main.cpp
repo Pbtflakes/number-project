@@ -4,7 +4,6 @@
 
 using namespace std;
 
-void		testprint(string);
 unsigned long	sumfile(string);
 
 int
@@ -13,20 +12,20 @@ main(int argc, char *argv[]) {
 		cout << "Please specify a file.\n";
 		return 1;
 	} else if (argc == 2) {
+		/* processes input file to string */
 		ifstream numfile(argv[1]);
 		string nums((istreambuf_iterator<char>(numfile)),
 				istreambuf_iterator<char>());
-		testprint(argv[1]);
-		cout << sumfile(nums) << endl;
+
+		/* information output */
+		unsigned long int tmp = sumfile(nums);
+		cout << "Sum:\t" << tmp << endl;
+		cout << "Avg:\t" << tmp * 1.0 / nums.length() << endl;
+		cout << "Amt:\t" << nums.length() << endl;
 		return 0;
 	} else {
 		return 2;
 	}
-}
-
-void
-testprint(string foo) {
-	cout << foo << endl;
 }
 
 unsigned long int
@@ -37,4 +36,3 @@ sumfile(string file) {
 		sum += file[i] - 30;
 	return sum;
 }
-
