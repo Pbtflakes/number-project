@@ -15,12 +15,12 @@ main(int argc, char *argv[]) {
 		cout << "Please specify a file.\n";
 		return EX_USAGE;
 	} else if (argc == 2) {
-		/* processes input file to string */
 		ifstream numfile(argv[1]);
 
 		const int MAX = 64;
 		char* end;
 		unsigned long long int num = 0;
+		unsigned long int tally = 0;
 		streamsize lim = 5;
 		
 		while (!numfile.eof()) {
@@ -28,22 +28,16 @@ main(int argc, char *argv[]) {
 			tmp = (char*) malloc(MAX + 1); 
 			numfile.getline(tmp, lim);
 			num += strtol(tmp, &end, 10);
+			tally++;
 			free(tmp);
 		}
-		cout << num << endl;
+		cout << "Amt:\t" << tally << endl;
+		cout << "Sum:\t" << num << endl;
+		cout << "Avg:\t" << num * 1.0 / tally << endl;
 
 		return 0;
 	} else {
 		cerr << "Invalid arguments\n";
 		return EX_USAGE;
 	}
-}
-
-unsigned long int
-sumfile(string file) {
-	unsigned long int sum = 0;
-	unsigned int i;
-	for (i = 0; i < file.length(); i++)
-		sum += file[i] - 30;
-	return sum;
 }
