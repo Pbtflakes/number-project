@@ -20,10 +20,10 @@ main(int argc, char *argv[]) {
 		string nums((istreambuf_iterator<char>(numfile)),
 				istreambuf_iterator<char>());
 
-		const int MAX = 128;
+		const int MAX = 64;
 		char* tmp;
+		char* end;
 		long int num = 0;
-		int n;
 		streamsize lim = 5;
 		
 		/* size_t sz; */
@@ -33,8 +33,7 @@ main(int argc, char *argv[]) {
 		while (!numfile.eof()) {
 			numfile.getline(tmp, lim);
 
-			sscanf(tmp, "%d", &n);
-			num += n;
+			num += strtol(tmp, &end, 10);
 		}
 		cout << num << endl;
 
