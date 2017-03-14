@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sysexits.h>
 
 using namespace std;
 
@@ -10,7 +11,7 @@ int
 main(int argc, char *argv[]) {
 	if (argc == 1) {
 		cout << "Please specify a file.\n";
-		return 1;
+		return EX_USAGE;
 	} else if (argc == 2) {
 		/* processes input file to string */
 		ifstream numfile(argv[1]);
@@ -24,7 +25,8 @@ main(int argc, char *argv[]) {
 		cout << "Amt:\t" << nums.length() << endl;
 		return 0;
 	} else {
-		return 2;
+		cerr << "Invalid arguments\n";
+		return EX_USAGE;
 	}
 }
 
