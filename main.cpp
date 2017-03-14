@@ -20,7 +20,7 @@ main(int argc, char *argv[]) {
 
 		const int MAX = 64;
 		char* end;
-		long int num = 0;
+		unsigned long long int num = 0;
 		streamsize lim = 5;
 		
 		while (!numfile.eof()) {
