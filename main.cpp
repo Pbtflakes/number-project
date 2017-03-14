@@ -20,29 +20,26 @@ main(int argc, char *argv[]) {
 		string nums((istreambuf_iterator<char>(numfile)),
 				istreambuf_iterator<char>());
 
-		/* information output */
-
-		/*
-		unsigned long int tmp = sumfile(nums);
-		cout << "Sum:\t" << tmp << endl;
-		cout << "Avg:\t" << tmp * 1.0 / nums.length() << endl;
-		cout << "Amt:\t" << nums.length() << endl;
-		return 0;
-		*/
-
-		const int MAX = 256;
+		const int MAX = 128;
 		char* tmp;
-		int num;
-		streamsize lim = 256;
-		size_t sz;
+		long int num = 0;
+		int n;
+		streamsize lim = 5;
+		
+		/* size_t sz; */
 
 		tmp = (char*) malloc(MAX + 1); 
+
 		while (!numfile.eof()) {
-			numfile.getline(tmp, lim, '\n');
+			numfile.getline(tmp, lim);
+			/*
 			string str(tmp);
 			num += stoi(tmp, &sz);
+			*/
+			sscanf(tmp, "%d", &n);
+			num += n;
 		}
-		cout << num;
+		cout << num << endl;
 
 	} else {
 		cerr << "Invalid arguments\n";
