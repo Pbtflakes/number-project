@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -Wpedantic
 FILES = main.cpp
 TARGET = loops
 
