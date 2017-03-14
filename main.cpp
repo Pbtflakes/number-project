@@ -32,10 +32,7 @@ main(int argc, char *argv[]) {
 
 		while (!numfile.eof()) {
 			numfile.getline(tmp, lim);
-			/*
-			string str(tmp);
-			num += stoi(tmp, &sz);
-			*/
+
 			sscanf(tmp, "%d", &n);
 			num += n;
 		}
