@@ -17,26 +17,22 @@ main(int argc, char *argv[]) {
 	} else if (argc == 2) {
 		/* processes input file to string */
 		ifstream numfile(argv[1]);
-		string nums((istreambuf_iterator<char>(numfile)),
-				istreambuf_iterator<char>());
 
 		const int MAX = 64;
-		char* tmp;
 		char* end;
 		long int num = 0;
 		streamsize lim = 5;
 		
-		/* size_t sz; */
-
-		tmp = (char*) malloc(MAX + 1); 
-
 		while (!numfile.eof()) {
+			char* tmp;
+			tmp = (char*) malloc(MAX + 1); 
 			numfile.getline(tmp, lim);
-
 			num += strtol(tmp, &end, 10);
+			free(tmp);
 		}
 		cout << num << endl;
 
+		return 0;
 	} else {
 		cerr << "Invalid arguments\n";
 		return EX_USAGE;
